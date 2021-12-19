@@ -16,18 +16,18 @@ class Reducer(object):
         
     def reduce(self):
         dic = {}
-        todos = 0
+        #todos = 0
         for current, group in groupby(self, itemgetter(0)):
             try:
                 total = sum(int(count) for current, count in group)
                 dic[current] = total
-                todos = todos + total
+                #todos = todos + total
                 #self.emit(current, total)
             except ValueError:
                 print('erro')
                 pass
         maximo = max(dic, key = dic.get)
-        print('Total: '+str(todos))
+        #print('Total: '+str(todos))
         self.emit(maximo, dic[maximo])
     def __iter__(self):
         for line in self.infile:
